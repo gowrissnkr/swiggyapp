@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .line::after{
+        content: "";
+        position: absolute;
+        height: 2px;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        background: #3d4152;
+    }
+    /* .icon-downArrow::before {
+        content: "\E923"
+    } */
+    .dpQwAI {
+        margin-left: calc(10% + 36px);
+        margin-right: calc(10% + 36px);
+    }
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+  }
