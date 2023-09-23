@@ -4,19 +4,28 @@ const dataSlice = createSlice({
     name: "data",
     initialState: {
         bestOffers: [],
-        categoryMenu : []
-
+        restaurantData: [],
+        singleRestaurantDetails: [],
+        cartItem: []
     },
     reducers: {
         addbestOffersData: (state, action) => {
-           state.bestOffers.push(action.payload)
+            state.bestOffers.push(action.payload)
         },
-        addCategoryMenuData : (state,action) => {
-            state.categoryMenu.push(action.payload)
+        addRestaurantData: (state, action) => {
+            state.restaurantData.push(action.payload)
+        },
+        addSingleRestaurantDetails: (state, action) => {
+            state.singleRestaurantDetails.push(action.payload)
+        },
+        addItems: (state, action) => {
+            console.log(action.payload)
+            // state.cartItem.push(action.payload)
         }
+
     }
 })
 
-export const {addbestOffersData,addCategoryMenuData} = dataSlice.actions
+export const { addbestOffersData, addRestaurantData, addSingleRestaurantDetails, addItems } = dataSlice.actions
 
 export default dataSlice.reducer

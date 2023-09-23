@@ -1,16 +1,16 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { addCategoryMenuData } from "../features/dataSlice"
+import { addRestaurantData } from "../features/dataSlice"
 import { API } from "../utils/constant"
 
-const useCategoryMenu = () => {
+const useResturantData = () => {
 
     const dispatch = useDispatch()
 
     const fetchData = async () => {
         const response = await fetch(API)
         const data = await response.json()
-        dispatch(addCategoryMenuData(data.data.cards[1]))
+        dispatch(addRestaurantData(data.data.cards[2]))
     }
 
     useEffect(() => {
@@ -18,4 +18,4 @@ const useCategoryMenu = () => {
     }, [])
 }
 
-export default useCategoryMenu;
+export default useResturantData;

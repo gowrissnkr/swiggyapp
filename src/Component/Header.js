@@ -6,7 +6,7 @@ import { headerData } from "../utils/constant";
 
 const Header = () => {  
     return (
-        <header className="shadow-[0_15px_40px_-20px_rgba(40,40,63,0.15)] fixed top-0 left-0 right-0 h-[80px] bg-[#fff] z-[1000] px-[20px]">
+        <header className="shadow-[0_15px_40px_-20px_rgba(40,40,63,0.15)] fixed top-0 right-0 left-0 h-[80px] bg-[#fff] z-[1000] px-[20px]">
             <div className="">
                 <div className="max-w-[1200px] min-w-[1200px] relative mx-auto bg-[#fff] flex items-center">
                     <Link to="/" className="block mr-[16px]">
@@ -23,7 +23,6 @@ const Header = () => {
                             (<NavLink data={data} key={data.id} />)
                         )}
                     </ul>
-
                 </div>
             </div>
         </header>
