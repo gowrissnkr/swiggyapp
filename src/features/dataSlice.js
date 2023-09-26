@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const dataSlice = createSlice({
     name: "data",
@@ -19,10 +19,19 @@ const dataSlice = createSlice({
             state.singleRestaurantDetails.push(action.payload)
         },
         addItems: (state, action) => {
-            console.log(action.payload)
-            // state.cartItem.push(action.payload)
+            const existingItem = state.cartItem.find((item) => item.card.info.id === action.payload.card.info.id)
+            if (existingItem) {
+                const updatedCart = state.cartItem.map((item) =>
+                    item?.card?.info?.id === action.payload?.card?.info?.id
+                        ? {...item, quantity : item.quantity + 1}
+                        : item
+                );
+                state.cartItem = updatedCart
+            }
+            else {
+                state.cartItem.push(action.payload)
+            }
         }
-
     }
 })
 

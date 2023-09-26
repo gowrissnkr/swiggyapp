@@ -1,17 +1,35 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CDN_URL } from "../utils/constant";
-import {addItems } from "../features/dataSlice";
+import { addItems } from "../features/dataSlice";
 
 
 const ItemCard = ({ items, showList }) => {
-    const dispatch = useDispatch();
+    const cartItems = useSelector((store) => store.data.cartItem)
+    const dispatch = useDispatch()
 
     const addToCart = (id) => {
         const data = items.filter((item) => item?.card?.info?.id === id)
         const [card] = data
-        const card1 = { ...card, qty: 1 }
-        console.log(card1)
-        dispatch(addItems({ ...card, qty: 1 }))
+        // if (cartItems.length === 0) {
+        //     dispatch(addItems([{ ...card, quantity: 1 }]))
+        // } else {
+        //     const existingItem = cartItems.map((card) => card?.card?.info?.id === id)          
+        //     if (existingItem) {              
+        //         const updatedCart = cartItems.map((item) =>
+        //             item?.card?.info?.id === id
+        //                 ? { ...item, quantity: item.quantity + 1 }
+        //                 : item
+        //         );
+        //         dispatch(addItems(updatedCart))
+        //         console.log(cartItems)
+        //     }
+
+        //     else {
+        //         console.log(cartItems)
+        //         dispatch(addItems([...cartItems, card]))
+        //     }
+        // }
+        dispatch(addItems({ ...card, quantity: 1 }))
     }
 
 
@@ -63,7 +81,3 @@ const ItemCard = ({ items, showList }) => {
 }
 
 export default ItemCard
-
-{/* <button className={item?.card?.info?.nextAvailableAtMessage ? "w-[118px] h-[96px] object-cover rounded-[6px] bg-[rgb(251_238_215)]" : "w-[118px] h-[96px] object-cover rounded-[6px] bg-[rgb(229_241_211)]"}>
-                                        {item?.card?.info?.imageId ? <img alt={item?.card?.info?.name} className="w-[118px] h-[96px] object-cover rounded-[6px] grayscale styles_itemImage__3CsDL" loading="lazy" width="256" src={CDN_URL + item?.card?.info?.imageId}   />: <img alt={item?.card?.info?.name} className="w-[118px] h-[96px] object-cover rounded-[6px] styles_itemImage__3CsDL" loading="lazy" width="256" src={CDN_URL + item?.card?.info?.imageId}   />}
-                                    </button> */}
